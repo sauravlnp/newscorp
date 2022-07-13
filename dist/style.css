@@ -1,0 +1,76 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: #000000;
+}
+body {
+    margin: 0;
+}
+p { padding: 0; margin: 0 0 12px; line-height: 1rem;}
+img{ padding: 0; margin: 0; line-height: 0;}
+h2
+{font-family: "Oswald", Helvetica, Arial, sans-serif; font-size: 1.8rem;
+line-height: 1.3;
+margin-top: 0;
+margin-bottom: .8rem;
+font-weight: 500;}
+
+h2.title { text-transform: uppercase; font-size: 1.3rem;} 
+
+#news-container{
+    width: 60vw;
+    border: 1px solid #ccc;
+}
+
+#articles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 100px;
+    gap: 7px;
+    padding: 7px;
+}
+#articles .article {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 28px;
+}
+.article:nth-child(1) {
+    grid-row: 1 / span 6;
+    
+}
+.article:nth-child(1) img,
+.article:nth-child(2) img {
+    width: 100%;
+}
+.article:nth-child(2) {
+    grid-row: 1 / span 4;
+    border-bottom:1px solid #5c5c5c;
+    
+}
+.article img {
+    float: right;
+}
+.article:nth-child(1) img { height:380px;}
+.article:nth-child(2) h2 { font-size: 1rem; margin-bottom: 5px;}
+.article:nth-child(3){ border-bottom:1px solid #5c5c5c; padding-bottom: 3px; margin-bottom: 12px;}
+
+.article:nth-child(3) h2,
+.article:nth-child(4) h2 { font-size: .7rem; color: #5c5c5c; text-transform: capitalize; margin-bottom: 0.3rem; }
+.article-date { position: absolute; bottom: 0; left:0; font-size: .6rem; z-index: 1;}
+.article:nth-child(1) .article-intro { color:red; font-family: "Oswald", Helvetica, Arial, sans-serif;}
+.article:nth-child(2) .article-intro { color:rgb(5, 152, 197); font-family: "Oswald", Helvetica, Arial, sans-serif; font-size:.8rem;}
+.article:nth-child(3) img,
+.article:nth-child(4) img{ padding-left: 5px; padding-bottom:5px;}
+@media screen and (max-width: 767px) {
+    #articles {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: unset;
+        
+    }
+    .article:nth-child(1) {
+        grid-row: auto;
+        
+    }
+  }
