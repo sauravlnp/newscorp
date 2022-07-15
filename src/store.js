@@ -23,8 +23,8 @@ const store = {
         return searchedObject;
     },
     utilFuncConvertDate: (date) => {
-        var seconds = Math.floor((new Date() - date) / 1000);  
-        var interval = seconds / 31536000;
+        let seconds = Math.floor((new Date() - date) / 1000);  
+        let interval = 0;
 
         interval = seconds / 86400;
         if (interval > 1) {

@@ -6,7 +6,7 @@ class Main {
     page = "";
 
     constructor() {
-
+      this.start(); //bootstrap the application
     }
 
     async start() {
@@ -23,41 +23,37 @@ class Main {
 
     render(collections) {
         const articleElement = document.getElementById("articles");
+        let articlesHTML = "Some Internal Error!";
 
         if(!collections.isAPIError) {
-            const articlesHTML = collections.data.reduce((acc, item, key) => {
-                
-                let publishedTime = store.utilFuncConvertDate(item.published);
-                let articleIntro = item.intro? `<p>
-                <span class="article-intro">
-                    ${item.intro}
-                </span>
-                </p>`: "";
-                return acc + `
-                    <div class="article">
-                        <div>
-                            <img src="${item.imageUrl}" />
-                            <h2 class="title">
-                                ${item.title}
-                            </h2>
-                        </div>
-                        ${articleIntro}
-                        <span class="article-date">
-                            ${publishedTime}
+                    articlesHTML = collections.data.reduce((acc, item, key) => {
+                    if(item){
+                        let publishedTime = store.utilFuncConvertDate(item.published);
+                        let articleIntro = item.intro? `<p>
+                        <span class="article-intro">
+                            ${item.intro}
                         </span>
-                    </div>`;
-            }, "");
-            articleElement.innerHTML = articlesHTML;
-        }
-        else{
-            articleElement.innerHTML = "Some Internal Error!";
-        }
-        
+                        </p>`: "";
+                        return acc + `
+                            <div class="article">
+                                <div>
+                                    <img src="${item.imageUrl}" />
+                                    <h2 class="title">
+                                        ${item.title}
+                                    </h2>
+                                </div>
+                                ${articleIntro}
+                                <span class="article-date">
+                                    ${publishedTime}
+                                </span>
+                            </div>`;
+                    }
+                }, "");
+                
+            }
+        articleElement.innerHTML = articlesHTML;
     }
-
 }
 
 const main = new Main();
 main.page = "landing";
-main.start();
-
